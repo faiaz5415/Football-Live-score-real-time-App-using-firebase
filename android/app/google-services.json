@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1045143817628",
+    "project_id": "faiaz-works",
+    "storage_bucket": "faiaz-works.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045143817628:android:5d1b81542937c33f148c59",
+        "android_client_info": {
+          "package_name": "com.example.firebase_crud_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApZ6mojFff-6fDtX5d0ExHlfZbIILcZvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
