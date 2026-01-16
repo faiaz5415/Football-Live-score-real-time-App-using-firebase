@@ -54,7 +54,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.sports_soccer, color: Colors.white, size: 32),
+                          const Icon(
+                            Icons.sports_soccer,
+                            color: Colors.white,
+                            size: 32,
+                          ),
                           const SizedBox(height: 8),
                           const Text(
                             "Live Scores",
@@ -98,7 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
               if (snapshots.connectionState == ConnectionState.waiting) {
                 return SliverFillRemaining(
                   child: Center(
-                    child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 );
               } else if (snapshots.hasError) {
@@ -118,8 +124,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       team2Score: data["team2_score"] ?? 0,
                       isRunning: data["is_running"] ?? false,
                       winner: data["winner_team"] ?? "TBD",
-                      team1CountryCode: (data["team1_country_code"] ?? "br").toString().toLowerCase(),
-                      team2CountryCode: (data["team2_country_code"] ?? "ar").toString().toLowerCase(),
+                      team1CountryCode: (data["team1_country_code"] ?? "br")
+                          .toString()
+                          .toLowerCase()
+                          .trim(),
+                      team2CountryCode: (data["team2_country_code"] ?? "ar")
+                          .toString()
+                          .toLowerCase()
+                          .trim(),
                     ),
                   );
                 }
@@ -153,10 +165,16 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text("Logout", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text(
+          "Logout",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         content: const Text("Are you sure you want to logout?"),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
           FilledButton(
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
@@ -218,7 +236,8 @@ class _MatchCardState extends State<_MatchCard> {
     super.dispose();
   }
 
-  String _formatTime() => '${_minutes.toString().padLeft(2, '0')}:${_seconds.toString().padLeft(2, '0')}';
+  String _formatTime() =>
+      '${_minutes.toString().padLeft(2, '0')}:${_seconds.toString().padLeft(2, '0')}';
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +263,9 @@ class _MatchCardState extends State<_MatchCard> {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 8),
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [Colors.red[600]!, Colors.red[400]!]),
+                gradient: LinearGradient(
+                  colors: [Colors.red[600]!, Colors.red[400]!],
+                ),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16),
                   topRight: Radius.circular(16),
@@ -256,20 +277,37 @@ class _MatchCardState extends State<_MatchCard> {
                   Container(
                     width: 8,
                     height: 8,
-                    decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
                   ),
                   const SizedBox(width: 8),
-                  const Text("LIVE", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+                  const Text(
+                    "LIVE",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
                   const SizedBox(width: 12),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Text(
                       _formatTime(),
-                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                 ],
@@ -282,9 +320,17 @@ class _MatchCardState extends State<_MatchCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildTeamInfo(widget.match.team1, widget.match.team1CountryCode),
-                    _buildScoreBox("${widget.match.team1Score} - ${widget.match.team2Score}"),
-                    _buildTeamInfo(widget.match.team2, widget.match.team2CountryCode),
+                    _buildTeamInfo(
+                      widget.match.team1,
+                      widget.match.team1CountryCode,
+                    ),
+                    _buildScoreBox(
+                      "${widget.match.team1Score} - ${widget.match.team2Score}",
+                    ),
+                    _buildTeamInfo(
+                      widget.match.team2,
+                      widget.match.team2CountryCode,
+                    ),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -292,10 +338,14 @@ class _MatchCardState extends State<_MatchCard> {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   decoration: BoxDecoration(
-                    color: isLive ? Colors.green.withOpacity(0.1) : Colors.grey[100],
+                    color: isLive
+                        ? Colors.green.withOpacity(0.1)
+                        : Colors.grey[100],
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: isLive ? Colors.green.withOpacity(0.3) : Colors.grey[300]!,
+                      color: isLive
+                          ? Colors.green.withOpacity(0.3)
+                          : Colors.grey[300]!,
                     ),
                   ),
                   child: Row(
@@ -308,7 +358,9 @@ class _MatchCardState extends State<_MatchCard> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        isLive ? "Match in Progress" : "Winner: ${widget.match.winner}",
+                        isLive
+                            ? "Match in Progress"
+                            : "Winner: ${widget.match.winner}",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -327,6 +379,10 @@ class _MatchCardState extends State<_MatchCard> {
   }
 
   Widget _buildTeamInfo(String name, String code) {
+    final sanitizedCode = code.length >= 2
+        ? code.substring(0, 2).toUpperCase()
+        : 'BR'; // fallback
+
     return Expanded(
       child: Column(
         children: [
@@ -340,7 +396,7 @@ class _MatchCardState extends State<_MatchCard> {
             ),
             clipBehavior: Clip.antiAlias,
             child: CountryFlag.fromCountryCode(
-              code,
+              sanitizedCode,
               height: 60,
               width: 60,
               shape: const Circle(),

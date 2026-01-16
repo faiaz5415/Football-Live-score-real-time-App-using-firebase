@@ -20,7 +20,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Sign Up")),
-      // SingleChildScrollView prevents overflow errors when the keyboard pops up
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -35,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: const InputDecoration(
                     labelText: "Email",
                     hintText: "Enter your email",
-                    border: OutlineInputBorder(), // Makes the field visible
+                    border: OutlineInputBorder(),
                   ),
                   validator: (String? value) {
                     if (value?.trim().isEmpty ?? true) {
@@ -51,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: const InputDecoration(
                     labelText: "Password",
                     hintText: "Enter your password",
-                    border: OutlineInputBorder(), // Added border for visibility
+                    border: OutlineInputBorder(),
                   ),
                   validator: (String? value) {
                     if (value?.trim().isEmpty ?? true) {
@@ -70,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: const InputDecoration(
                     labelText: "Confirm Password",
                     hintText: "Re-enter your password",
-                    border: OutlineInputBorder(), // Added border for visibility
+                    border: OutlineInputBorder(),
                   ),
                   validator: (String? value) {
                     if (value?.trim().isEmpty ?? true) {
@@ -126,7 +125,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("New User Registered Successfully")),
           );
-          // The app will auto-navigate if you updated app.dart
         }
       }
     } on FirebaseAuthException catch (e) {
