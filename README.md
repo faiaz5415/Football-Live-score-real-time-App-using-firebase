@@ -85,7 +85,7 @@ flutter run
 
 **Kh Faiaz Hasan**  
 🎓 B.Sc. in Computer Science & Engineering (CSE)  
-🏫 Daffodil International University (3rd Year)
+🏫 Daffodil International University (Graduated)
 
 **Interests:**
 - Flutter App Development
